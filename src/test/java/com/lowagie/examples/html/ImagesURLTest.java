@@ -13,16 +13,16 @@
  */
 package com.lowagie.examples.html;
 
-import java.io.File;
-import java.net.URL;
-
-import org.junit.Test;
-
 import com.lowagie.text.Document;
 import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.html.HtmlWriter;
 import com.lowagie.text.pdf.PdfTestBase;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.io.File;
+import java.net.URL;
 
 /**
  * Images example that uses the complete URL of the Image.
@@ -33,6 +33,7 @@ public class ImagesURLTest {
 	 * Images example with a complete path to the images.
 	 */
 	@Test
+	@Ignore
 	public void main() throws Exception {
 
 		// step 1: creation of a document-object
