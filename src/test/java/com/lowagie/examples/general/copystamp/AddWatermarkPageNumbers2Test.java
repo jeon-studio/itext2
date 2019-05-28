@@ -58,7 +58,8 @@ public class AddWatermarkPageNumbers2Test{
             	over.beginText();
             	over.setFontAndSize(bf, 18);
             	over.setTextMatrix(30, 30);
-            	over.showText("page(페이지) " + i);
+//            	over.showText("page(페이지) " + i);
+            	over.showTextAligned(Element.ALIGN_RIGHT, "page(페이지) " + i, reader.getPageSize(i).getWidth(),0,0);
             	over.setFontAndSize(bf, 32);
             	over.showTextAligned(Element.ALIGN_LEFT, "DUPLICATE", 230, 430, 45);
             	over.endText();
