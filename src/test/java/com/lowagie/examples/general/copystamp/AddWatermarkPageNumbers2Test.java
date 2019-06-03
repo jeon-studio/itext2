@@ -68,10 +68,13 @@ public class AddWatermarkPageNumbers2Test{
             stamp.insertPage(1, PageSize.A4);
             over = stamp.getOverContent(1);
             //OCG테스트
-            over.beginLayer( new PdfLayer( "layer1", stamp.getWriter() ) );
+			PdfLayer pdfLayer = new PdfLayer( "layer1", stamp.getWriter() );
+			//SPEC 381p
+			pdfLayer.setPrint( "Watermark", false );
+            over.beginLayer( pdfLayer );
         	over.beginText();
         	over.setFontAndSize(bf, 18);
-            over.showTextAligned(Element.ALIGN_LEFT, "DUPLICATE OF AN EXISTING PDF DOCUMENT", 30, 600, 0);
+            over.showTextAligned(Element.ALIGN_LEFT, "듀플DUPLICATE OF AN EXISTING PDF DOCUMENT", 30, 600, 0);
             over.endText();
             //OCG테스트
             over.endLayer();
