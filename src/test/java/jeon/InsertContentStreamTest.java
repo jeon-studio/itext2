@@ -30,6 +30,7 @@ public class InsertContentStreamTest{
             PdfContentByte under;
             PdfContentByte over;
             Image img = Image.getInstance(PdfTestBase.RESOURCES_DIR +"watermark.jpg");
+            img.setAbsolutePosition( 0,0 );
             under = stamp.getUnderContent(1);
             under.addImage(img);
 //            PdfReader reader2 = new PdfReader(PdfTestBase.RESOURCES_DIR +"SimpleAnnotations1.pdf");
