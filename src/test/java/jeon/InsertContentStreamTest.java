@@ -26,7 +26,6 @@ public class InsertContentStreamTest{
             PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"jeon/simple.pdf");
             int n = reader.getNumberOfPages();
             PdfStamper stamp = new PdfStamper(reader,PdfTestBase.getOutputStream("_insert_content_stream_1.pdf"));
-            // adding content to each page
             PdfContentByte under;
             PdfContentByte over;
             Image img = Image.getInstance(PdfTestBase.RESOURCES_DIR +"watermark.jpg");
