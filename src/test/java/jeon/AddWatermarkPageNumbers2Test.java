@@ -11,7 +11,7 @@
  *
  * itext-questions@lists.sourceforge.net
  */
-package com.lowagie.examples.general.copystamp;
+package jeon;
 
 import com.lowagie.text.Element;
 import com.lowagie.text.Image;
