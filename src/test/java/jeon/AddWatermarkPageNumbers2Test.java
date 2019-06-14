@@ -46,7 +46,7 @@ public class AddWatermarkPageNumbers2Test{
             PdfContentByte over;
             Image img = Image.getInstance(PdfTestBase.RESOURCES_DIR +"watermark.jpg");
 //            BaseFont bf = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.WINANSI, BaseFont.EMBEDDED);
-			BaseFont bf = BaseFont.createFont( PdfTestBase.RESOURCES_DIR + "NanumBarunGothic.ttf", BaseFont.IDENTITY_H, true );
+			BaseFont bf = BaseFont.createFont( PdfTestBase.RESOURCES_DIR + "jeon/NanumBarunGothic.ttf", BaseFont.IDENTITY_H, true );
             img.setAbsolutePosition(200, 400);
             while (i < n) {
             	i++;
