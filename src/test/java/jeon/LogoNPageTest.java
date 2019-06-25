@@ -14,6 +14,7 @@
 package jeon;
 
 import com.lowagie.text.Document;
+import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.*;
 import org.junit.Test;
 
@@ -68,10 +69,13 @@ public class LogoNPageTest{
 		template.sanityCheck();
 
 		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
-		cb.addTemplate(template, .5f, 0, 0, .5f, 100, 400);
-		cb.addTemplate(template, 0.25f, 0, 0, 0.25f, 100, 100);
+//		cb.addTemplate(template, .5f, 0, 0, .5f, 100, 400);
+//		cb.addTemplate(template, 0.25f, 0, 0, 0.25f, 100, 100);
 		
-		writer.newPage();
+//		writer.newPage();
+		 document.newPage();
+		 document.add( new Paragraph( "?" ) );
+		 cb.addTemplate(template, 0.25f, 0, 0, 0.25f, 100, 100);
 		
 		cb.sanityCheck();
 
