@@ -32,9 +32,9 @@ public class InsertContentStreamTest{
             img.setAbsolutePosition( 0,0 );
             under = stamp.getUnderContent(1);
             under.addImage(img);
-//            PdfReader reader2 = new PdfReader(PdfTestBase.RESOURCES_DIR +"SimpleAnnotations1.pdf");
-//            under = stamp.getUnderContent(1);
-//            under.addTemplate(stamp.getImportedPage(reader2, 3), 1, 0, 0, 1, 0, 0);
+            PdfReader reader2 = new PdfReader(PdfTestBase.RESOURCES_DIR +"SimpleAnnotations1.pdf");
+            under = stamp.getUnderContent(1);
+            under.addTemplate(stamp.getImportedPage(reader2, 3), 1, 0, 0, 1, 0, 0);
             stamp.close();
     }
 }
