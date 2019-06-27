@@ -17,6 +17,9 @@ import com.lowagie.text.Document;
 import com.lowagie.text.pdf.*;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 /**
  * Draws the iText logo.
  */
@@ -27,12 +30,14 @@ public class InsertPdfFormXObjectTest{
 	 */
 	 @Test
 	public void main() throws Exception {
+	 	
+	 	File outputFile = PdfTestBase.getOutputFile( "_formxobject.pdf" );
 
 		// step 1: creation of a document-object
 		Document document = new Document();
 
 		// step 2: creation of the writer
-		PdfWriter writer = PdfWriter.getInstance(document,	PdfTestBase.getOutputStream("_formxobject.pdf"));
+		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream( outputFile ) );
 
 		// step 3: we open the document
 		document.open();
@@ -46,35 +51,51 @@ public class InsertPdfFormXObjectTest{
 		 PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"ChapterSection.pdf");
 		 PdfImportedPage template = writer.getImportedPage( reader, 1 );
 		
-//		PdfTemplate template = cb.createTemplate(500, 200);
-//		template.setLineWidth(2f);
-//		template.rectangle(2.5f, 2.5f, 495f, 195f);
-//		template.stroke();
-//		template.setLineWidth(12f);
-//		template.arc(40f - (float) Math.sqrt(12800),
-//				120f + (float) Math.sqrt(12800),
-//				200f - (float) Math.sqrt(12800),
-//				-40f + (float) Math.sqrt(12800), 281.25f, 33.75f);
-//		template.arc(40f, 120f, 200f, -40f, 90f, 45f);
-//		template.stroke();
-//		template.setLineCap(1);
-//		template.setLineWidth(12f);
-//		template.arc(80f, 40f, 160f, 120f, 90f, 180f);
-//		template.arc(115f, 75f, 125f, 85f, 0f, 360f);
-//		template.stroke();
-//		template.beginText();
-//		template.setFontAndSize(bf, 180);
-//		template.setRGBColorFill(0xFF, 0x00, 0x00);
-//		template.showTextAligned(PdfContentByte.ALIGN_LEFT, "T", 125f, 35f, 0f);
-//		template.resetRGBColorFill();
-//		template.showTextAligned(PdfContentByte.ALIGN_LEFT, "ext", 220f, 35f,
-//				0f);
-//		template.endText();
-//		template.sanityCheck();
 
 		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
-//		cb.addTemplate(template, .5f, 0, 0, .5f, 100, 400);
-//		cb.addTemplate(template, 0.25f, 0, 0, 0.25f, 100, 100);
+		cb.addTemplate(template, 0, 0 );
+		cb.sanityCheck();
+
+		// step 5: we close the document
+		document.close();
+
+
+		 Document document2 = new Document( );
+		 PdfWriter writer2 = PdfWriter.getInstance( document2, PdfTestBase.getOutputStream( "_formxobject2.pdf" ) );
+		 document2.open();
+		 PdfContentByte contentByte = writer2.getDirectContent();
+		 PdfReader reader2 = new PdfReader( outputFile.getAbsolutePath( ) );
+		 PdfImportedPage template2 = writer2.getImportedPage( reader2, 1 );
+		 
+		 contentByte.addTemplate( template2, 0, 0 );
+		 document2.close();
+	}
+	
+	@Test
+	public void caseAd() throws Exception {
+
+		// step 1: creation of a document-object
+		Document document = new Document();
+
+		// step 2: creation of the writer
+		PdfWriter writer = PdfWriter.getInstance(document,	PdfTestBase.getOutputStream("_formxobject-ad.pdf"));
+
+		// step 3: we open the document
+		document.open();
+
+		// step 4:
+		BaseFont bf = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252,
+				BaseFont.NOT_EMBEDDED);
+		PdfContentByte cb = writer.getDirectContent();
+
+
+		PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"jeon/fill-and-stroke-test.pdf");
+		PdfImportedPage template = writer.getImportedPage( reader, 1 );
+
+		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
+
+//		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
+		cb.addTemplate(template, 0, 0);
 		cb.sanityCheck();
 
 		// step 5: we close the document
