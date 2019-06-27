@@ -92,7 +92,7 @@ public class InsertPdfFormXObjectTest{
 		PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"jeon/fill-and-stroke-test.pdf");
 		PdfImportedPage template = writer.getImportedPage( reader, 1 );
 
-		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
+//		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
 
 //		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
 		cb.addTemplate(template, 0, 0);
@@ -123,7 +123,7 @@ public class InsertPdfFormXObjectTest{
 		PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"jeon/content-stream-array.pdf");
 		PdfImportedPage template = writer.getImportedPage( reader, 1 );
 
-		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
+//		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
 
 		//		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
 		cb.addTemplate(template, 0, 0);
