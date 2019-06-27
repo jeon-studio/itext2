@@ -101,4 +101,35 @@ public class InsertPdfFormXObjectTest{
 		// step 5: we close the document
 		document.close();
 	}
+	
+	@Test
+	public void caseContentStreamArray() throws Exception {
+
+		// step 1: creation of a document-object
+		Document document = new Document();
+
+		// step 2: creation of the writer
+		PdfWriter writer = PdfWriter.getInstance(document,	PdfTestBase.getOutputStream("_formxobject-arr.pdf"));
+
+		// step 3: we open the document
+		document.open();
+
+		// step 4:
+		BaseFont bf = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252,
+				BaseFont.NOT_EMBEDDED);
+		PdfContentByte cb = writer.getDirectContent();
+
+
+		PdfReader reader = new PdfReader(PdfTestBase.RESOURCES_DIR +"jeon/content-stream-array.pdf");
+		PdfImportedPage template = writer.getImportedPage( reader, 1 );
+
+		PdfStream stream = template.getFormXObject( PdfStream.DEFAULT_COMPRESSION );
+
+		//		cb.addTemplate(template, 0, 1, -1, 0, 500, 200);
+		cb.addTemplate(template, 0, 0);
+		cb.sanityCheck();
+
+		// step 5: we close the document
+		document.close();
+	}
 }
