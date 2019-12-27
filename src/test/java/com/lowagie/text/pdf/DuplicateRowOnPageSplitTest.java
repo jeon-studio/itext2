@@ -1,13 +1,18 @@
 package com.lowagie.text.pdf;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.*;
-import org.junit.Test;
-
-import java.awt.*;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.junit.Test;
+
+import com.lowagie.text.Document;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
 
 
 // not completed
@@ -32,7 +37,6 @@ public class DuplicateRowOnPageSplitTest {
 	@Test
 	public void test () throws Exception {
 		File file = File.createTempFile("testfile", ".pdf");
-//		File file = new File("/tmp/test.pdf");
 		System.out.println(file.getAbsolutePath());
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream(file));
